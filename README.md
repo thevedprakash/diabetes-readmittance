@@ -1,8 +1,8 @@
 # diabetes-readmittance
 This repository is for Diabetes Readmittance Prediction.
 
-About Dataset
-Dataset name: Diabetes 130-US hospitals for years 1999-2008 Data Set
+### About Dataset
+**Dataset name**: Diabetes 130-US hospitals for years 1999-2008 Data Set.
 
 Background: Diabetes Mellitus (DM) is a chronic disease where the blood has high sugar level. It can occur when the pancreas does not produce enough insulin, or when the body cannot effectively use the insulin it produces (WHO). Diabetes is a progressive disease that can lead to a significant number of health complications and profoundly reduce the quality of life. While many diabetic patients manage the health complication with diet and exercise, some require medications to control blood glucose level. As published by a research article named “The relationship between diabetes mellitus and 30-day readmission rates”, it is estimated that 9.3% of the population in the United States have diabetes mellitus (DM), 28% of which are undiagnosed. In recent years, government agencies and healthcare systems have increasingly focused on 30-day readmission rates to determine the complexity of their patient populations and to improve quality. Thirty-day readmission rates for hospitalized patients with DM are reported to be between 14.4 and 22.7%, much higher than the rate for all hospitalized patients (8.5–13.5%).
 
