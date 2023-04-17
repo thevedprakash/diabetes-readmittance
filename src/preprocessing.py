@@ -37,6 +37,7 @@ class Preprocess:
       return df
   def handling_cat(self, df):
     object_columns = df.select_dtypes(object).columns
+    encoded_dict = {}
     for col in object_columns:
         le = LabelEncoder()
         le.fit(df[col])
@@ -46,7 +47,7 @@ class Preprocess:
     return df, encoded_dict
 
 
-def Preprocessing(df, target, path):
+def Preprocessing(target, path):
     data = Preprocess(path)
     df = data.df
     df = data.remove_cols(df, cols_to_be_dropped)
@@ -60,13 +61,16 @@ def Preprocessing(df, target, path):
 
 
 if __name__ == "__main__":
-    path = '/home/ris/pythonProject/diabetes-readmittance/data/diabetes_raw.csv'
+    path = '/home/ris/pythonProject/diabetes-readmittance/data/diabetic_train.csv'
 
-    target = 'readmitted'
     data = Preprocess(path)
     df = data.df
-
-    X, y, encoded_dict = Preprocessing(df, target)
+    df = data.remove_cols(df, cols_to_be_dropped)
+    df = data.scalling(df)
+    df = data.remove_outliers(df)
+    df, encoded_dict = data.handling_cat(df)
+    print(encoded_dict)
+    print(df)
 
 
 

@@ -36,34 +36,33 @@ def train(X, y, modelType):
 
 
 if __name__ == "__main__":
-    path = '/home/ris/pythonProject/diabetes-readmittance/data/diabetes_raw.csv'
+    path = '/home/ris/pythonProject/diabetes-readmittance/data/diabetic_train.csv'
 
     target = 'readmitted'
 
 
-    data = Preprocess(path)
-    df = data.df
 
 
-    X, y, encoded_dict = Preprocessing(df, target, path)
 
-    with open('/home/ris/pythonProject/diabetes-readmittance/data/encoded.pickle', 'wb') as handle:
+    X, y, encoded_dict = Preprocessing(target, path)
+
+    with open('/home/ris/pythonProject/diabetes-readmittance/models/encoded.pickle', 'wb') as handle:
         pickle.dump(encoded_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     print("Statrted Training the Linear_regression model.")
     regression_model = train(X, y, regression)
     print("Saving the model.")
-    file_name = "/home/ris/pythonProject/diabetes-readmittance/data/regression.pickle"
+    file_name = "/home/ris/pythonProject/diabetes-readmittance/models/regression.pickle"
     save_pickle(regression_model, file_name)
 
     print("Statrted Training the decisiontree model.")
     decisiontree_model = train(X, y, decisiontree)
     print("Saving the model.")
-    file_name = "/home/ris/pythonProject/diabetes-readmittance/data/decision.pickle"
+    file_name = "/home/ris/pythonProject/diabetes-readmittance/models/decision.pickle"
     save_pickle(decisiontree_model, file_name)
 
     print("Statrted Training the knearestneighbour model.")
     knearestneighbour_model = train(X, y, knearestneighbour)
     print("Saving the model.")
-    file_name = "/home/ris/pythonProject/diabetes-readmittance/data/knearest.pickle"
+    file_name = "/home/ris/pythonProject/diabetes-readmittance/models/knearest.pickle"
     save_pickle(knearestneighbour_model, file_name)
