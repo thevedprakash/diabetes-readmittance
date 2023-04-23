@@ -25,7 +25,6 @@ def remove_admission_type_outlier(value):
   else:
     return value
 
-
 def remove_gender_outlier(value):
   if value not in ['Female', 'Male']:
     return 'Female'

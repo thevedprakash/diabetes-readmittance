@@ -10,7 +10,7 @@ import pickle
 import joblib
 import os
 from sklearn.model_selection import train_test_split
-from models import regression, knearestneighbour, decisiontree
+from model import Logistic_regression
 
 
 
@@ -26,6 +26,8 @@ def save_pickle(model, file_name):
 def load_model(file_name):
     model = joblib.load(file_name)
     return model
+
+
 
 
 def train(X, y, modelType):
@@ -44,25 +46,14 @@ if __name__ == "__main__":
 
 
 
-    X, y, encoded_dict = Preprocessing(target, path)
+    X, y, transform_dict = Preprocessing(target, path)
 
-    with open('/home/ris/pythonProject/diabetes-readmittance/models/encoded.pickle', 'wb') as handle:
-        pickle.dump(encoded_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    with open('/home/ris/pythonProject/diabetes-readmittance/models/transform_dict.pickle', 'wb') as handle:
+        pickle.dump(transform_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     print("Statrted Training the Linear_regression model.")
-    regression_model = train(X, y, regression)
+    Logistic_regression_model = train(X, y, Logistic_regression)
     print("Saving the model.")
-    file_name = "/home/ris/pythonProject/diabetes-readmittance/models/regression.pickle"
-    save_pickle(regression_model, file_name)
+    file_name = "/home/ris/pythonProject/diabetes-readmittance/models/Logistic_regression.pickle"
+    save_pickle(Logistic_regression_model, file_name)
 
-    print("Statrted Training the decisiontree model.")
-    decisiontree_model = train(X, y, decisiontree)
-    print("Saving the model.")
-    file_name = "/home/ris/pythonProject/diabetes-readmittance/models/decision.pickle"
-    save_pickle(decisiontree_model, file_name)
-
-    print("Statrted Training the knearestneighbour model.")
-    knearestneighbour_model = train(X, y, knearestneighbour)
-    print("Saving the model.")
-    file_name = "/home/ris/pythonProject/diabetes-readmittance/models/knearest.pickle"
-    save_pickle(knearestneighbour_model, file_name)
